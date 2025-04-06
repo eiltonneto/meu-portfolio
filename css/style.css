@@ -164,8 +164,11 @@ span {
 
 .services-container {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 .services-container .services-box {
@@ -178,11 +181,12 @@ span {
 }
 
 .services-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 25rem;
-    margin-bottom: 1rem;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
 }
 
 
@@ -201,14 +205,40 @@ span {
 }
 
 .services-box p {
-    margin: 0.5rem;
-    letter-spacing: 0.1rem;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
+    width: 90%;
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Texto oculto */
+.more-text {
+    display: none;
+  }
+  
+  /* Exibir mais texto */
+  .expanded .more-text {
+    display: inline;
+  }
+  
+  /* Read More para modo curto */
+  .short  {
+    white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+
+  .short   {
+    max-height: 95px;
+    overflow: hidden;
+    transition: height 0.4s ease;
+}
+
+
+.expanded {
+    max-height: 1000px;
 }
 
 
@@ -258,6 +288,10 @@ span {
 
 .portfolio-box:hover .portfolio-layer {
     transform: translateY(0);
+}
+
+.portfolio-layer {
+    z-index: 2; /* ou maior que 1 */
 }
 
 .portfolio-layer h4 {
@@ -323,6 +357,7 @@ form {
 
 form .input-box input, form textarea {
     width: 100%;
+    max-width: 100%;
     padding: 1rem;
     font-size: 1rem;
     color: var(--text-color);
@@ -330,6 +365,7 @@ form .input-box input, form textarea {
     border-radius: 0.5rem;
     margin: 0.4rem 0;
 }
+
 
 form .input-box {
     display: flex;
@@ -339,7 +375,43 @@ form .input-box {
 
 form textarea {
     resize: none;
+    width: 100%;
+
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+  .modal-content {
+    background-color: #222;
+    color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+  }
+  
+  .close-btn {
+    color: #9D6BFF;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  
 
 footer {
     display: flex;
@@ -469,6 +541,7 @@ footer {
     .services-container {
         flex-direction: column;
         align-items: center;
+        font-size: 0.9rem;
     }
 
     .services-box {
@@ -478,7 +551,54 @@ footer {
     .portfolio-container {
         grid-template-columns: 1fr; /* 1 coluna em telas pequenas */
         gap: 1.5rem; /* Espaçamento entre as boxes */
+        font-size: 1.2rem;
     }
+
+    .portfolio-container p{
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    
+    .contact {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Faz a seção ocupar a tela toda */
+        padding: 4rem 2rem; /* Ajusta o espaço interno */
+        box-sizing: border-box;
+    }
+
+    .contact{
+        padding-top: 4rem;
+    }
+
+    .contact form {
+        width: 50;
+       
+    }
+
+    .contact form .input-box {
+        display: flex;
+        width: 100%;
+    }
+
+    .contact form input,
+    .contact form textarea {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        box-sizing: border-box;
+    }
+
+    .contact form .btn {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+
+
 }
 
 /* Small (sm): Smartphone (landscape) */
@@ -495,6 +615,7 @@ footer {
     .portfolio-container {
         grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas maiores que 576px */
     }
+    
 }
 
 /* Medium (md): Tablet */
@@ -536,6 +657,16 @@ footer {
     form .input-box input {
         width: 49%;
     }
+    
+    .services-container{
+        font-size: 0.95rem;
+    }
+
+    .short{
+        max-height: 70px;
+    }
+
+    
 }
 
 /* large (lg): notebook */
@@ -547,6 +678,10 @@ footer {
 
     .portfolio-container {
         grid-template-columns: repeat(3, 1fr); /* 3 colunas em notebooks */
+    }
+
+    .short{
+        max-height: 45px;
     }
 }
 
@@ -566,5 +701,9 @@ footer {
 
     .portfolio-container {
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Colunas flexíveis em desktops */
+    }
+
+    .short{
+        max-height: 45px;
     }
 }

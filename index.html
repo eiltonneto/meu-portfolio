@@ -10,6 +10,29 @@
     <!-- custom css -->
      <link rel="stylesheet" href="css/style.css">
 </head>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const openBtn = document.querySelector(".open-about-modal");
+      const modal = document.getElementById("about-modal");
+      const closeBtn = document.querySelector(".close-btn");
+  
+      openBtn.addEventListener("click", function () {
+        modal.style.display = "block";
+      });
+  
+      closeBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+      });
+  
+      window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    });
+  </script>
+  
+  
 <body>
     <header>
         <a href="#" class="logo">Portfolio</a>
@@ -78,26 +101,27 @@
                 <i class='bx bx-code-alt'></i>
                 <h3>Web Development</h3>
 
-                <p>
-                    Development of modern and responsive web interfaces, focused on user experience and performance. Currently, I use the best practices of HTML, CSS and JavaScript to create efficient and scalable solutions, while delving into new technologies such as React, Node.js and modern frameworks to expand my knowledge and offer even more complete solutions.
-
+                <p id="web-text" class="short">
+                    Development of modern and responsive web interfaces, focused on user experience and performance. 
+                    Currently, I use the best practices of HTML, CSS and JavaScript to create efficient and scalable 
+                    solutions, while delving into new technologies such as React, Node.js and modern frameworks to expand
+                     my knowledge and offer even more complete solutions.
                 </p>
-                <a href="#" class="btn">Read More</a>
+                <button onclick="toggleText('web-text', event)" class ="btn">Read more</button>
+               
             </div> 
 
             <div class="services-box">
                 <i class='bx bx-code-curly' ></i>
                 <h3>Back-End Development</h3>
 
-                <p>
-                    Building robust and secure back-end systems using technologies such as Java, along with HTML and CSS for complementary interfaces. I am currently developing RESTful API integration, database connections and performance optimization, seeking to expand my knowledge in complete and efficient solutions.
+                <p id ="web-text2" class = "short">
+                    Building robust and secure back-end systems using technologies such as Java, along with HTML and CSS for 
+                    complementary interfaces. I am currently developing RESTful API integration, database connections and 
+                    performance optimization, seeking to expand my knowledge in complete and efficient solutions.
                 </p>
-                <a href="#" class="btn">Read More</a>
+                <button onclick="toggleText2('web-text2', event)" class ="btn">Read more</button>
             </div> 
-
-
-
-
             
         </div>
 
@@ -118,10 +142,11 @@
                 
 
                     <p>
-                        Development of a responsive and secure login page. The interface is fully adaptable to different devices, ensuring a consistent and pleasant user experience. Technologies used: HTML, CSS.
+                        Development of a responsive and secure login page. The interface is fully adaptable to different
+                         devices, ensuring a consistent and pleasant user experience. Technologies used: HTML, CSS.
 
                     </p>
-                    <a href="#"><i class='bx bx-link-external' ></i></a>
+                    <a href="https://eiltonneto.github.io/pagina-de-login/" target="_blank"><i class='bx bx-link-external' ></i></a>
                 </div>
             </div>
     
@@ -133,7 +158,7 @@
                 <p>
                     Project in production: Registration and Consultation System using HTML, CSS, JS and REACT.
                 </p>
-                <a href="#"><i class='bx bx-link-external'></i></a>
+                <a href="https://github.com/eiltonneto/sistema-de-atendimento-ed" target="_blank"><i class='bx bx-link-external'></i></a>
             </div>
             <div class="production-overlay">
                 <span>Em Produção</span>
@@ -182,24 +207,31 @@
      <!-- /contact section -->
 
      <!-- about section -->
-      <section class="about" id="about">
-        <div class="about-img">
-            <img src="img/Profile Picture 2.PNG" alt="">
-        </div>
-
-        <div class="about-content">
-            <h3>About Me</h3>
-            <h1>Front-End <span>Development</span></h1>
-
-            <p>
-                Hi, I'm Eilton Neto, a front-end developer passionate about creating modern and functional interfaces. I currently have solid experience in HTML, CSS and JavaScript, and I'm expanding my knowledge to include API integration, back-end development with Java and other technologies that complement my work. I'm always looking to learn and stay up to date with the latest market trends to offer complete and efficient solutions.
-
-            </p>
-
-            <a href="##" class="btn">Read More</a>
-        </div>
-      </section>
-     <!-- about section -->
+     <section class="about" id="about">
+       <div class="about-img">
+         <img src="img/Profile Picture 2.PNG" alt="">
+       </div>
+     
+       <div class="about-content">
+         <h3>About Me</h3>
+         <h1>Front-End <span>Development</span></h1>
+         <p>
+           Hi, I'm Eilton Neto, a front-end developer passionate about creating modern and functional interfaces. I currently have solid experience in HTML, CSS and JavaScript, and I'm expanding my knowledge to include API integration, back-end development with Java and other technologies that complement my work.
+         </p>
+         <button class="btn open-about-modal">Read More</button>
+       </div>
+     </section>
+     
+     <!-- 🔽 Modal fora da section -->
+     <div class="modal" id="about-modal">
+       <div class="modal-content">
+         <span class="close-btn">&times;</span>
+         <h3>Mais sobre mim</h3>
+         <p>
+           Tenho me dedicado ao desenvolvimento front-end com foco em boas práticas e projetos práticos que demonstram minhas habilidades. Estou evoluindo para o full-stack com Java no back-end, construindo um portfólio funcional e pronto para o mercado.
+         </p>
+       </div>
+     </div>
 
      <footer>
         <div class="footer-content">
@@ -212,5 +244,6 @@
         </div>
     </footer>
 </body>
+
 <script src="js/script.js"></script>
 </html>
